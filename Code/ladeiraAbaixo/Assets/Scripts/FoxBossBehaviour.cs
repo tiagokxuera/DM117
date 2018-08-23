@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class FoxBossBehaviour : MonoBehaviour {
 
+    private static string _GAMEOVERSCENE = "GameOverScene";
+
     //Não deixa entrar na rotina de tempo
     private bool flagTimer = false;
 
@@ -42,20 +44,18 @@ public class FoxBossBehaviour : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        ObstacleBehavior._isGameOver = false;
         source = GetComponent<AudioSource>();       
     }
     
     // Update is called once per frame
     void Update () {
-        if (bossRunning)
-        {
+        if (bossRunning) {
             //vamos correr atrás do jogador
             //Testamos para evitar que entre com um target null
-            if (target != null)
-            {
+            if (target != null) {
                 //Se já é hora de chamar o deslocamento do boss
-                if (!flagTimer)
-                {
+                if (!flagTimer) {
                     flagTimer = true;
                     //Executa a rotina abaixo a cada 0.1s
                     StartCoroutine(BossOffSet(0.1f));
@@ -65,8 +65,7 @@ public class FoxBossBehaviour : MonoBehaviour {
     }
 
     //Função que roda em paralelo. Cai aqui a cada "time", para recalcular a posição do boss
-    IEnumerator BossOffSet(float time)
-    { 
+    IEnumerator BossOffSet(float time) { 
         // Distance moved = time * speed.
         float distCovered = (Time.time - startTime) * speed;
 
@@ -84,8 +83,7 @@ public class FoxBossBehaviour : MonoBehaviour {
 
     //Esse método será chamado pelo objeto que starta o trigger do player
     //Ele vai disparar a perseguição
-    public void SetRunninON()
-    {
+    public void SetRunninON() {
         //Coloco o local de origem e destino da perseguição
         startMarker = transform;
         endMarker = target;
@@ -97,54 +95,47 @@ public class FoxBossBehaviour : MonoBehaviour {
         startTime = Time.time;
         // Calculate the journey length.
         journeyLength = Vector3.Distance(startMarker.position, endMarker.position);
-}
+    }
 
     //Esse método será chamado pelo objeto que starta o trigger do player
     //Ele vai encerrar a perseguição
-    public void SetRunninOFF()
-    {
+    public void SetRunninOFF() {
         bossRunning = false;
     }
 
     //Método que será chamado via send message, 
     //para detectar que esse objeto foi tocado
-    public void TouchedObject()
-    {
+    public void TouchedObject() {
         KillBoss();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
+    private void OnCollisionEnter(Collision collision) {
         //Verificamos se é um obstáculo para matar o boss
-        if (collision.gameObject.GetComponent<ObstacleBehavior>())
-        {
+        if (collision.gameObject.GetComponent<ObstacleBehavior>()) {
             KillBoss();
         }
 
         //Verificamos se é o player primeiro
-        if (collision.gameObject.GetComponent<PlayerBehavior>())
-        {
+        if (collision.gameObject.GetComponent<PlayerBehavior>()) {
+            ObstacleBehavior._isGameOver = true;
             Destroy(collision.gameObject);
-            Invoke("GameReset", timeToEnd);      
+            Invoke("GameOver", timeToEnd);      
         }      
     }
 
-    //Reinicia o jogo
-    void GameReset()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    /// <summary>
+    /// MÉTODO DISPARADO PELA COLISÃO DO PLAYER COM O BOSS. CARREGA A TELA-GAMEOVER DO JOGO
+    /// </summary>
+    public void GameOver() {
+        SceneManager.LoadScene(_GAMEOVERSCENE);
     }
 
-    public void KillBoss()
-    {
-        if (explosion != null)
-        {
+    public void KillBoss() {
+        if (explosion != null) {
             var exploded = Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(exploded, 2.0f);
-
         }
         AudioSource.PlayClipAtPoint(source.clip, transform.position);
         Destroy(this.gameObject);
     }
-
 }

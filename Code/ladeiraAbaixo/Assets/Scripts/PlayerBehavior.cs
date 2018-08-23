@@ -12,12 +12,12 @@ public class PlayerBehavior : MonoBehaviour {
     private Rigidbody playerRB;
 
     [Tooltip ("Velocidade de movimento lateral do player")]
-    [Range(1, 20)]
+    [Range(1, 2000)]
     [SerializeField]
     public float horizontalPlayerSpeed = 5.0f;
 
     [Tooltip("Velocidade de movimento do player")]
-    [Range(-20,-1)]
+    [Range(-2000,-1)]
     [SerializeField]
     public float playerSpeed = -5.0f;  
 
@@ -30,6 +30,11 @@ public class PlayerBehavior : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        //SE O JOGO ESTÁ PAUSADO, NÃO DEVE ATUALIZAR O PLAYER
+        if (MainSceneBehavior._isPaused) {
+            return;
+            //TODO: IMPLEMENTAR A PAUSA DEFINITIVA PARANDO O TEMPO DO JOGO COM O TIMESCALE
+        }
 
         /*Esse é a maneira de controlar o jogador pelo mouse. Deixamos de lado
         para usar via teclado
@@ -56,9 +61,9 @@ public class PlayerBehavior : MonoBehaviour {
         //-------------------------------
         //Controle do movimento do player:
         var horizontalSpeed = Input.GetAxis("Horizontal")
-            * horizontalPlayerSpeed;
+            * horizontalPlayerSpeed * Time.deltaTime;
 
-        var verticalSpeed = Input.GetAxis("Vertical") * playerSpeed;
+        var verticalSpeed = Input.GetAxis("Vertical") * playerSpeed * Time.deltaTime;
 
         //Como o jogo é invertido, vamos inverter a verticalSpeed
         playerRB.AddForce(horizontalSpeed, 0, (verticalSpeed * -1));

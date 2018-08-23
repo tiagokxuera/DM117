@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{39544FF3-57ED-DD0F-48C4-44B2EE45C7E4}</ProjectGuid>
+    <ProjectGuid>{78252F8D-9584-B9C9-F9E5-DC82408FCA54}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -61,24 +61,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BackgroundMusicBehaviour.cs" />
+    <Compile Include="Assets\Scripts\AdControlBehavior.cs" />
     <Compile Include="Assets\Scripts\CameraBehavior.cs" />
     <Compile Include="Assets\Scripts\EndBossBehaviour.cs" />
+    <Compile Include="Assets\Scripts\EndGameBehaviour.cs" />
+    <Compile Include="Assets\Scripts\EndMainSceneBehaviour.cs" />
+    <Compile Include="Assets\Scripts\EndSnowManBehaviour.cs" />
     <Compile Include="Assets\Scripts\FoxBossBehaviour.cs" />
+    <Compile Include="Assets\Scripts\GameOverSceneBehavior.cs" />
+    <Compile Include="Assets\Scripts\InitialSceneBehavior.cs" />
+    <Compile Include="Assets\Scripts\MainSceneBehavior.cs" />
     <Compile Include="Assets\Scripts\ObstacleBehavior.cs" />
     <Compile Include="Assets\Scripts\PlayerBehavior.cs" />
+    <Compile Include="Assets\Scripts\SnowManBossBehaviour.cs" />
     <Compile Include="Assets\Scripts\StartBossBehaviour.cs" />
+    <Compile Include="Assets\Scripts\StartSnowManBehaviour.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>D:/DM117/Code/ladeiraAbaixo/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>D:/DM117/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/DM117/Code/ladeiraAbaixo/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/DM117/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/DM117/Code/ladeiraAbaixo/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/DM117/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/DM117/Code/ladeiraAbaixo/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/DM117/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

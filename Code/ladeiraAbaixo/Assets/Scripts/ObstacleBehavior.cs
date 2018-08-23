@@ -4,12 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ObstacleBehavior : MonoBehaviour {
+
+    public static bool _isGameOver;
+
+    private static string _GAMEOVERSCENE = "GameOverScene";
+
     [Tooltip("Tempo antes de reiniciar o jogo")]
     public float timeToEnd = 2.0f;
 
     // Use this for initialization
     void Start () {
-		
+        _isGameOver = false;
 	}
 	
 	// Update is called once per frame
@@ -20,17 +25,18 @@ public class ObstacleBehavior : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         //Verificamos se é o player primeiro
-        if (collision.gameObject.GetComponent<PlayerBehavior>())
-        {
+        if (collision.gameObject.GetComponent<PlayerBehavior>()) {
+            _isGameOver = true;
             Destroy(collision.gameObject);
-            Invoke("GameReset", timeToEnd);
+            Invoke("GameOver", timeToEnd);
         }
     }
 
-    //Reinicia o jogo
-    void GameReset()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    /// <summary>
+    /// MÉTODO DISPARADO PELA COLISÃO DO PLAYER COM ALGUM OBSTÁCULO. CARREGA A TELA-GAMEOVER DO JOGO
+    /// </summary>
+    public void GameOver() {
+        SceneManager.LoadScene(_GAMEOVERSCENE);
     }
 
 }
