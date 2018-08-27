@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Script de detecção do fim da MainScene (trigger)
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,8 +25,7 @@ public class EndMainSceneBehaviour : MonoBehaviour {
     {
         //Se foi uma colisão com o Player
         if (other.GetComponent<PlayerBehavior>())
-        {
-            //INTERROMPE A EXECUÇÃO DA MÚSICA DE BACKGROUND            
+        {         
             SceneManager.LoadScene(_MAINSCENE2);
         }
     }

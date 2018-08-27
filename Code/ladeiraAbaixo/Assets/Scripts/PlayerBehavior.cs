@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿//Configuração para compilar na versão celular (com acelerômetro), descomente a linha 2 e comente a linha 3!
+//#define ANDROID_BUILD
+#define PC_BUILD
+
+//Script de controle do jogador
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,7 +43,7 @@ public class PlayerBehavior : MonoBehaviour {
         }
 
         /*Esse é a maneira de controlar o jogador pelo mouse. Deixamos de lado
-        para usar via teclado
+        para usar via teclado. Porém ficou no código
         //criamos a variável que vai ditar a direção do movimento
         float direction = 0.0f;
         //Pegamos a posição do mouse
@@ -58,12 +64,26 @@ public class PlayerBehavior : MonoBehaviour {
         playerRB.AddForce(horizontalSpeed, 0, (playerSpeed*-1));  
         */
 
+
+#if ANDROID_BUILD
+        //Aqui faremos uma compilação exclusiva para android, para controlar pelo acelerômetro do celular
+        var horizontalSpeed = Input.acceleration.x
+               * horizontalPlayerSpeed * Time.deltaTime;
+
+        var verticalSpeed = Input.acceleration.y
+                * playerSpeed * Time.deltaTime;
+#endif
+
+#if PC_BUILD
         //-------------------------------
-        //Controle do movimento do player:
+        //Aqui, faremos o controle do movimento do player pelo teclado
+        //O efeito de aplicar a força ficou muito semelhante ao efeito de uma bike descendo uma ladeira.
+        //Portanto, mantivemos assim.
         var horizontalSpeed = Input.GetAxis("Horizontal")
             * horizontalPlayerSpeed * Time.deltaTime;
 
         var verticalSpeed = Input.GetAxis("Vertical") * playerSpeed * Time.deltaTime;
+#endif
 
         //Como o jogo é invertido, vamos inverter a verticalSpeed
         playerRB.AddForce(horizontalSpeed, 0, (verticalSpeed * -1));
@@ -88,6 +108,7 @@ public class PlayerBehavior : MonoBehaviour {
 
         if (Physics.Raycast(clickRay, out hit))
         {
+            //envio de mensagens entre GO
             hit.transform.SendMessage
                 ("TouchedObject", SendMessageOptions.DontRequireReceiver);
         }

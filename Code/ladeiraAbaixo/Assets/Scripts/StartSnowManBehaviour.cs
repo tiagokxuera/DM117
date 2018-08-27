@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Script que dispara a corrida do Snowman (boss da fase 2) atrás do player
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

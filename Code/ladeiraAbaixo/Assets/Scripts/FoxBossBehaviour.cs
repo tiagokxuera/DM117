@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//Script de comportamento do fox boss (boss da primeira fase)
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;

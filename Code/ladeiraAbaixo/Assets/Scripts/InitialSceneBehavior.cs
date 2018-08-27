@@ -1,17 +1,21 @@
-﻿using System.Collections;
+﻿//Script de comportamento da InitialScene
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class InitialSceneBehavior : MonoBehaviour {
 
+    //Referência para MainScene
     private static string _MAINSCENE = "MainScene";
+    //Referência para PauseScene
     private static string _PAUSECENE = "PauseScene";
+    //Referência para GameOverScene
     private static string _GAMEOVERSCENE = "GameOverScene";
 
     //ATRIBUTO PRIVADO RESPONSÁVEL PELA MÚSICA DE FUNDO
     private AudioSource audioSource;
-
 
     // Use this for initialization
     void Start() {
@@ -29,7 +33,6 @@ public class InitialSceneBehavior : MonoBehaviour {
         //BUSCA PELO COMPONENTE AUDIO-SOURCE DO GO
         audioSource = GetComponent<AudioSource>();
     }
-
 
     /// <summary>
     /// MÉTODO DISPARADO PELO CLIQUE NO BOTÃO "JOGAR". CARREGA A PRIMEIRA-FASE DO JOGO
@@ -52,5 +55,15 @@ public class InitialSceneBehavior : MonoBehaviour {
     /// </summary>
     public void LoadGameOverScene() {
         SceneManager.LoadScene(_GAMEOVERSCENE);
+    }
+
+    /// <summary>
+    /// MÉTODO DISPARADO PELO CLIQUE NO BOTÃO "EXIT". Mata a aplicação
+    /// </summary>
+    public void ExitAPP()
+    {
+        //INTERROMPE A EXECUÇÃO DA MÚSICA DE BACKGROUND DA INITIAL-SCENE
+        audioSource.Stop();
+        Application.Quit();
     }
 }

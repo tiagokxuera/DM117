@@ -1,11 +1,16 @@
-﻿using System.Collections;
+﻿//Script para detectar o trigger do end game
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndGameBehaviour : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    private static string _VICTORYSCENE = "VictoryScene";
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -21,6 +26,7 @@ public class EndGameBehaviour : MonoBehaviour {
         if (other.GetComponent<PlayerBehavior>())
         {
             //Mostrar a tela Vitória!
+            SceneManager.LoadScene(_VICTORYSCENE);
         }
     }
 }

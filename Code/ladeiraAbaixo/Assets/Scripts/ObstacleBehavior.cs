@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Script de comportamento dos obstáculos (árvores, pedras, galhos e montanhas) que matam tanto o boss quanto o player
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +9,7 @@ public class ObstacleBehavior : MonoBehaviour {
 
     public static bool _isGameOver;
 
+    //Referência para o Game Over Scene
     private static string _GAMEOVERSCENE = "GameOverScene";
 
     [Tooltip("Tempo antes de reiniciar o jogo")]

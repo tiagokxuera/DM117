@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Comportamento quando o boss cruza a linha final de sua atuação
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

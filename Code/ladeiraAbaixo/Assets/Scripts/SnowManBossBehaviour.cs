@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿//Script de comportamento do Boss (SnowMan) da segunda fase (MainScene2)
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SnowManBossBehaviour : MonoBehaviour
 {
-
+    //Referência para a tela de game over
     private static string _GAMEOVERSCENE = "GameOverScene";
 
     //Não deixa entrar na rotina de tempo
@@ -15,7 +17,7 @@ public class SnowManBossBehaviour : MonoBehaviour
     [SerializeField]
     public Transform target;
 
-    [Tooltip("Alvo está em perseguição")]
+    [Tooltip("Alvo está em perseguição (flag)")]
     [SerializeField]
     public bool snowManBossRunning = false;
 
@@ -32,15 +34,17 @@ public class SnowManBossBehaviour : MonoBehaviour
     [Tooltip("Velocidade do Boss na perseguição")]
     [SerializeField]
     public float speed = 0.8f;
+
     // Time when the movement started.
     private float startTime;
+
     // Total distance between the markers.
     private float journeyLength;
 
     //Referência para o áudio
     private AudioSource source;
 
-    [Tooltip("Tempo antes de reiniciar o jogo")]
+    [Tooltip("Tempo antes de reiniciar o jogo (efeito morreu)")]
     public float timeToEnd = 2.0f;
 
     // Use this for initialization
@@ -53,6 +57,7 @@ public class SnowManBossBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Se o boss esta correndo atrás do player:
         if (snowManBossRunning)
         {
             //vamos correr atrás do jogador
@@ -144,6 +149,7 @@ public class SnowManBossBehaviour : MonoBehaviour
         SceneManager.LoadScene(_GAMEOVERSCENE);
     }
 
+    //Método para invocar a explosão de partículas do boss
     public void KillBoss()
     {
         if (explosion != null)

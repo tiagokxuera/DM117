@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Script de controle da câmera que segue o player
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Script de controle da GameOverScene
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,8 +15,8 @@ public class GameOverSceneBehavior : MonoBehaviour {
     private AudioSource audioSource;
 
     //ATRIBUTO PÚBLICO RESPONSÁVEL PELOS EVENTOS OCORRIDOS NO BOTÃO <EXIBIÇÃO DE ADVERTISEMENT>
+    //Botão não foi necessário
     //public Button GameOverButton;  
-
 
     //O ANÚNCIO COM RECOMPENSA SEMPRE SERÁ EXIBIDO QUANDO A TELA DE GAME OVER FOR INICIADA
     // Use this for initialization

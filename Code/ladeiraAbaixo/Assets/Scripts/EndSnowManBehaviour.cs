@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Script para detectar o fimd e atuação do Snowman boss (boss da fase 2)
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

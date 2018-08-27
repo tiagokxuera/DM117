@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Comportamento do Advertisement (anúncio)
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,9 +40,13 @@ public class AdControlBehavior : MonoBehaviour {
 #if UNITY_ADS
     public static void Unpause(ShowResult result) {
         //DESPAUSA O JOGO QUANDO O ANÚNCIO ENCERRAR
-        MainSceneBehavior._isPaused = false; //!!! TIAGO PRECISARÁ IMPLEMENTAR !!!
-        Time.timeScale = 1f; //!!! TIAGO PRECISARÁ IMPLEMENTAR !!!
-    }
+        MainSceneBehavior._isPaused = false; 
+        Time.timeScale = 1f;
+        //Indico para a MainScene que o jogador assistiu o advertisement
+        MainSceneBehavior._adDone = true;
+        //Debug para saber se acabou o anúncio
+        //Debug.Log("Acabou o advertisement");
+}
 #endif
 
     // Use this for initialization

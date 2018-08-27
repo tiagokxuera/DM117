@@ -3329,6 +3329,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1218347679047942, guid: 071ae3f5b7505564799fb26d0d4b8df1, type: 2}
+      propertyPath: m_TagString
+      value: Destroyable2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 071ae3f5b7505564799fb26d0d4b8df1, type: 2}
   m_IsPrefabAsset: 0
@@ -5839,6 +5843,10 @@ Prefab:
       propertyPath: m_Name
       value: Arvore3A
       objectReference: {fileID: 0}
+    - target: {fileID: 1218347679047942, guid: 071ae3f5b7505564799fb26d0d4b8df1, type: 2}
+      propertyPath: m_TagString
+      value: Destroyable3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 071ae3f5b7505564799fb26d0d4b8df1, type: 2}
   m_IsPrefabAsset: 0
@@ -5977,6 +5985,10 @@ Prefab:
     - target: {fileID: 1218347679047942, guid: 071ae3f5b7505564799fb26d0d4b8df1, type: 2}
       propertyPath: m_Name
       value: Arvore1A
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218347679047942, guid: 071ae3f5b7505564799fb26d0d4b8df1, type: 2}
+      propertyPath: m_TagString
+      value: Destroyable1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 071ae3f5b7505564799fb26d0d4b8df1, type: 2}
